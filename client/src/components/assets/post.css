@@ -1,0 +1,11 @@
+.backBtn{
+    position: absolute;
+    top: 50%;
+    left: 10%
+}
+
+.btn{
+    position: absolute;
+    top: 80%;
+    right: 5%;
+}

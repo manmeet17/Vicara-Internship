@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchPost, deletePost } from '../action';
+import '../components/assets/post.css';
 
 class PostsShow extends Component{
     componentDidMount(){
@@ -22,7 +23,7 @@ class PostsShow extends Component{
         }
         return(
             <div>
-                <Link to="/"><button className="btn btn-success pull-xs-left">Back to Home Page </button></Link>
+                <Link to="/"><button className="btn btn-success pull-xs-left backBtn">Back to Home Page </button></Link>
                 <button className="btn btn-danger pull-xs-right" onClick={this.onDelete.bind(this)}>
                     Delete Post
                 </button>
