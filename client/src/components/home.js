@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import {fetchPost} from '../action/fetch_post';
+import { Link } from 'react-router-dom';
+import {fetchPosts} from '../action';
 import _ from 'lodash';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import AI from './assets/AI.png';
-const api="PMQ8-5I2N-T6MN-S1ZI";
-
+import './assets/home.css';
 
 class Landing extends Component{
     
     componentDidMount(){
-        this.props.fetchPost();
+        this.props.fetchPosts();
     }
 
     renderPost(){
@@ -22,6 +22,9 @@ class Landing extends Component{
                 </div><br/>
                 <h3>Title:  {post.title}</h3>  <br/>
                 <p>Content: {post.content}</p>
+                <Link to={`/posts/${post.id}`}>
+                <button className="btn btn-primary">Read More!</button>
+                </Link>
                 </li>
             )
         });
@@ -31,7 +34,7 @@ class Landing extends Component{
         return (
             <div style={{textAlign: 'center'}}>
             <h1>Blog</h1>
-            <div class="container">
+            <div className="container">
             <ul className="list-group">
             {this.renderPost()}
             </ul>
@@ -45,4 +48,4 @@ function mapStateProps(state){
     return {posts: state.posts};
 }
 
-export default connect(mapStateProps,{fetchPost})(Landing);
+export default connect(mapStateProps,{fetchPosts})(Landing);

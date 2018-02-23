@@ -1,11 +1,13 @@
-body{
-    background-color: grey;
+.container{
+    background-color: black;
 }
 
-imageContainer{
-    width: 40%;
-    height: 40%;
-    border-color: black;
-    border-width: 5px;
-    border-style: solid;
+.list-group-item{
+    position: relative;
+}
+
+.btn{
+    position: absolute;
+    top: 80%;
+    right: 5%;
 }
