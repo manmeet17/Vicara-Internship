@@ -26,7 +26,7 @@ class Landing extends Component{
                 <button className="btn btn-primary">Read More!</button>
                 </Link>
                 </li>
-            )
+            );
         });
     }
 

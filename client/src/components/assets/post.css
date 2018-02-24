@@ -4,6 +4,10 @@
     left: 10%
 }
 
+.container{
+    background: white;
+}
+
 .btn{
     position: absolute;
     top: 80%;

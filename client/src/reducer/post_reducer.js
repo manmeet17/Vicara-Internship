@@ -4,6 +4,7 @@ import _ from 'lodash';
 export default function(state={},action){
     switch(action.type){
         case FETCH_POST:
+            console.log("Payload returned: ",action.payload.data);
             return _.mapKeys(action.payload.data,'id');
         case FETCH_SINGLE_POST:
             const post=action.payload.data;

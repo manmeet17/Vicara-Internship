@@ -6,16 +6,31 @@ export const DELETE_POST="DELETE_POST";
 const url="http://reduxblog.herokuapp.com/api/posts";
 const api="?key=manmeet";
 
+// var callApi= async () =>{
+//     const res=await fetch('/api/users');
+//     const body = await res.json();
+//     if (res.status!==200) throw Error(body.message);
+//     return body;
+// }
+
 export function fetchPosts() {
-    const req=axios.get(url+api);
+    fetch('/api/users')
+        .then( res => res.json())
+        .then(res=> {
+            var data = new Promise(function(resolve,reject){
+                
+            });
+        })
+        .catch( err => console.error(err))
     return {
         type: FETCH_POST,
-        payload: req
-    };
+        payload: data
+    }
 }
 
 export function fetchPost(id){
     const req=axios.get(`${url}/${id}${api}`);
+    console.log("Req is :",req);
     return {
         type: FETCH_SINGLE_POST,
         payload: req
