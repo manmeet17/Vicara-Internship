@@ -3,9 +3,6 @@ export const FETCH_POST="FETCH_POST";
 export const FETCH_SINGLE_POST="FETCH_SINGLE_POST";
 export const DELETE_POST="DELETE_POST";
 
-const url="http://reduxblog.herokuapp.com/api/posts";
-const api="?key=manmeet";
-
 // var callApi= async () =>{
 //     const res=await fetch('/api/users');
 //     const body = await res.json();
@@ -32,7 +29,7 @@ export function fetchPost(id){
 }
 
 export function deletePost(id,cb){
-    const request=axios.delete(`${url}/${id}${api}`).then(() => cb());
+    const request=axios.delete(`http://localhost:3001/api/posts/${id}`).then(() => cb());
     return{
         type: DELETE_POST,
         payload: id

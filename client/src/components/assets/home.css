@@ -3,6 +3,7 @@
 }
 
 .list-group-item{
+    /* width: 60%; */
     position: relative;
 }
 
@@ -10,4 +11,24 @@
     position: absolute;
     top: 80%;
     right: 5%;
+}
+
+.likes{
+    position: absolute;
+    top: 80%;
+    left: 50%;
+}
+
+.shares{
+    position: absolute;
+    top: 80%;
+    left: 58%;
+}
+
+i{
+    color: darkblue;
+}
+
+span{
+    font-size: 20px;
 }

@@ -4,9 +4,7 @@ import { Link } from 'react-router-dom';
 import {fetchPosts} from '../action';
 import _ from 'lodash';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import AI from './assets/AI.png';
 import './assets/home.css';
-import { relative } from 'path';
 
 class Landing extends Component{
     
@@ -21,8 +19,10 @@ class Landing extends Component{
                 <div className="col-lg-6 imageContainer">
                 <img src={post.imgLink} style={{width: '300px', height: "300px"}} />
                 </div><br/>
-                <h3>Title:  {post.title}</h3>  <br/>
-                <p>Content: {post.content}</p>
+                <h3>{post.title}</h3>  <br/>
+                <p>{post.content}</p>
+                <span className="likes"><i className="fa fa-thumbs-up"></i>{post.meta.likes}</span>
+                <span className="shares"><i className="fa fa-facebook-square"></i>{post.meta.shares}</span>
                 <Link to={`/posts/${post._id}`}>
                 <button className="btn btn-primary">Read More!</button>
                 </Link>

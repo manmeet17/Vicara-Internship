@@ -40,7 +40,11 @@ router.post('/',function(req,res){
     title: req.body.title,
     content: req.body.content,
     categories: req.body.categories.split(','),
-    imgLink: req.body.imgLink
+    imgLink: req.body.imgLink,
+    meta: {
+      likes: req.body.meta.likes,
+      shares: req.body.meta.shares
+    }
   });
 
   newPost.save((err) => {
