@@ -14,7 +14,7 @@ const api="?key=manmeet";
 // }
 
 export function fetchPosts(){
-    const req=axios.get('http://localhost:3001/api/users');
+    const req=axios.get('http://localhost:3001/api/posts');
     console.log("Req: ",req);
     return {
         type: FETCH_POST,
@@ -23,7 +23,7 @@ export function fetchPosts(){
 }
 
 export function fetchPost(id){
-    const req=axios.get(`${url}/${id}${api}`);
+    const req=axios.get(`http://localhost:3001`);
     console.log("Req is :",req);
     return {
         type: FETCH_SINGLE_POST,
