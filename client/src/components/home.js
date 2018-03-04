@@ -6,6 +6,7 @@ import _ from 'lodash';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import AI from './assets/AI.png';
 import './assets/home.css';
+import { relative } from 'path';
 
 class Landing extends Component{
     

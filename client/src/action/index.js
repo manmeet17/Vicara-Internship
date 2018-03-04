@@ -13,18 +13,12 @@ const api="?key=manmeet";
 //     return body;
 // }
 
-export function fetchPosts() {
-    fetch('/api/users')
-        .then( res => res.json())
-        .then(res=> {
-            var data = new Promise(function(resolve,reject){
-                
-            });
-        })
-        .catch( err => console.error(err))
+export function fetchPosts(){
+    const req=axios.get('http://localhost:3001/api/users');
+    console.log("Req: ",req);
     return {
         type: FETCH_POST,
-        payload: data
+        payload: req
     }
 }
 
