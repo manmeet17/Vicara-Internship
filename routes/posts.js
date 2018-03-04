@@ -5,27 +5,42 @@ const Post = require('../models/post');
 
 
 router.get('/', function(req, res, next) {
-  res.json([{
-  	id: 1,
-    title: "AI",
-    content: "AI is the future"
-  }, {
-  	id: 2,
-    title: "ML",
-    content: "ML is interesting"
-  }]);
+  Post.find({}).exec((err, posts) =>{
+    if(err)
+    {
+      res.status(200).json({
+        status:400,
+        message: "Error in finding posts",
+        info: err
+      });
+    }
+    res.json({
+      status: 200,
+      message: "Successfully found posts",
+      info: posts
+    });
+  });
 });
 
-// router.get('/:id',function(req,res){
-  
+router.get('/:id',function(req,res){
+  const id=req.params.id;
+  Post.findById(id, function(err,post){
+    if(err) throw(err);
 
-// });
+    res.json({
+      status: 200,
+      message: "Single post found",
+      info: post
+    });
+  });
+});
 
 router.post('/',function(req,res){
   const newPost=new Post({
     title: req.body.title,
     content: req.body.content,
-    categories: req.body.categories.split(',')
+    categories: req.body.categories.split(','),
+    imgLink: req.body.imgLink
   });
 
   newPost.save((err) => {

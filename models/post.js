@@ -1,5 +1,3 @@
-import { model } from 'mongoose';
-
 var mongoose=require('mongoose');
 
 var postSchema=new mongoose.Schema({
@@ -11,7 +9,8 @@ var postSchema=new mongoose.Schema({
     meta: {
         likes: Number,
         shares: Number
-    }
+    },
+    imgLink: String
 });
 
 var Post=mongoose.model('Post',postSchema);

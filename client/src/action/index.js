@@ -23,7 +23,7 @@ export function fetchPosts(){
 }
 
 export function fetchPost(id){
-    const req=axios.get(`http://localhost:3001`);
+    const req=axios.get(`http://localhost:3001/api/posts/${id}`);
     console.log("Req is :",req);
     return {
         type: FETCH_SINGLE_POST,

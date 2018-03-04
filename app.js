@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose=require('mongoose');
-
+const config=require('./config');
 var index = require('./routes/index');
 var posts = require('./routes/posts');
 
@@ -24,6 +24,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+mongoose.connect(config.db_url,(err) =>{
+  if(err) console.log(err);
+});
 
 app.all('/*', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");

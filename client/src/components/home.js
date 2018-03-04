@@ -17,13 +17,13 @@ class Landing extends Component{
     renderPost(){
         return _.map(this.props.posts,post => {
             return (
-                <li className="list-group-item" key={post.id}>
+                <li className="list-group-item" key={post._id}>
                 <div className="col-lg-6 imageContainer">
-                <img src={AI} alt="AI" />
+                <img src={post.imgLink} style={{width: '300px', height: "300px"}} />
                 </div><br/>
                 <h3>Title:  {post.title}</h3>  <br/>
                 <p>Content: {post.content}</p>
-                <Link to={`/posts/${post.id}`}>
+                <Link to={`/posts/${post._id}`}>
                 <button className="btn btn-primary">Read More!</button>
                 </Link>
                 </li>
