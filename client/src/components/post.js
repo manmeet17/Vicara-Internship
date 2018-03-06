@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
+import _ from 'lodash';
 import { fetchPost, deletePost } from '../action';
 import '../components/assets/post.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -30,8 +31,16 @@ class PostsShow extends Component{
                     Delete Post
                 </button>
                 <h3>Title: {post.title}</h3>
-                <img src={post.imgLink} />
-                <h6>Categories: {post.categories}</h6>
+                <img src={post.imgLink} /><br />
+                <div className="w3-show-inline-block">
+                <div className="w3-bar">
+                {
+                    _.map(post.categories,cat =>{
+                        return <button className="w3-btn w3-teal">{cat}</button>
+                    })
+                }
+                </div>
+                </div>
                 <p>Content: {post.content}</p>
             </div>
         );
