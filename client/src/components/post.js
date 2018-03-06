@@ -36,7 +36,7 @@ class PostsShow extends Component{
                 <div className="w3-bar">
                 {
                     _.map(post.categories,cat =>{
-                        return <button className="w3-btn w3-teal">{cat}</button>
+                        return <button key={cat} className="w3-btn w3-teal">{cat}</button>
                     })
                 }
                 </div>

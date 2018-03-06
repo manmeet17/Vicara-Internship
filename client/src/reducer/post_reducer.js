@@ -14,6 +14,7 @@ export default function(state={},action){
             return newState;
         case DELETE_POST:
             const delPost=action.payload.id;
+            console.log(delPost);
             return delPost;
         default:
             return state;

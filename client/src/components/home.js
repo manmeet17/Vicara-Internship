@@ -35,6 +35,9 @@ class Landing extends Component{
         return (
             <div style={{textAlign: 'center'}}>
             <h1>Blog</h1>
+            <Link to="/posts/new">
+            <button className="btn btn-primary">Add New Post</button>
+            </Link>
             <div className="container">
             <ul className="list-group">
             {this.renderPost()}

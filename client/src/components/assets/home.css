@@ -7,7 +7,7 @@
     position: relative;
 }
 
-.btn{
+.list-group-item button{
     position: absolute;
     top: 80%;
     right: 5%;

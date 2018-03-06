@@ -2,6 +2,7 @@ import axios from 'axios';
 export const FETCH_POST="FETCH_POST";
 export const FETCH_SINGLE_POST="FETCH_SINGLE_POST";
 export const DELETE_POST="DELETE_POST";
+export const CREATE_POST="CREATE_POST";
 
 // var callApi= async () =>{
 //     const res=await fetch('/api/users');
@@ -29,9 +30,17 @@ export function fetchPost(id){
 }
 
 export function deletePost(id,cb){
-    const request=axios.delete(`http://localhost:3001/api/posts/${id}`).then(() => cb());
+    const req=axios.delete(`http://localhost:3001/api/posts/${id}`).then(() => cb());
     return{
         type: DELETE_POST,
         payload: id
+    }
+}
+
+export function createPost(values,cb){
+    const req=axios.post('http://localhost:3001/api/posts/new',values).then(() => cb());
+    return {
+        type: CREATE_POST,
+        payload: req
     }
 }
