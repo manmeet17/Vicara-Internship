@@ -35,7 +35,7 @@ router.get('/:id',function(req,res){
   });
 });
 
-router.post('/',function(req,res){
+router.post('/new',function(req,res){
   const newPost=new Post({
     title: req.body.title,
     content: req.body.content,
@@ -61,5 +61,6 @@ router.post('/',function(req,res){
     });
   });
 });
+
 
 module.exports = router;

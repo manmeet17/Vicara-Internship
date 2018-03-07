@@ -1,0 +1,17 @@
+form{
+    position: relative;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.formbtn1{
+    position: absolute;
+    top: 110%;
+    left: 5% !important;
+}
+
+.formbtn2{
+    position: absolute;
+    top: 110%;
+    right: 5% !important;
+}

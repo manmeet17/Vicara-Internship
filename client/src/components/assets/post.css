@@ -1,6 +1,6 @@
 .backBtn{
     position: absolute;
-    top: 50%;
+    top: 80%;
     left: 10%
 }
 
@@ -8,10 +8,10 @@
     background: white;
 }
 
-.btn{
+.delbtn{
     position: absolute;
     top: 80%;
-    right: 5%;
+    right: 10%;
 }
 
 img{

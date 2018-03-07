@@ -1,4 +1,4 @@
-import { FETCH_SINGLE_POST,FETCH_POST,DELETE_POST } from "../action/index";
+import { FETCH_SINGLE_POST,FETCH_POST,DELETE_POST,CREATE_POST } from "../action/index";
 import _ from 'lodash';
 
 export default function(state={},action){
@@ -15,7 +15,7 @@ export default function(state={},action){
         case DELETE_POST:
             const delPost=action.payload.id;
             console.log(delPost);
-            return delPost;
+            return delPost;   
         default:
             return state;
     }

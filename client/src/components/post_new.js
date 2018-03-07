@@ -3,6 +3,7 @@ import { Field, reduxForm } from "redux-form";
 import {connect} from 'react-redux';
 import { Link } from "react-router-dom";
 import { createPost } from '../action';
+import './assets/new.css';
 
 class PostsNew extends Component{
     renderField(field){
@@ -23,6 +24,7 @@ class PostsNew extends Component{
     }
 
     onSubmit(values){
+        console.log("Values are:", values);
         this.props.createPost(values,() =>{
             this.props.history.push('/');
         });
@@ -59,12 +61,12 @@ class PostsNew extends Component{
                 component={this.renderField}
                 />
                 <Field
-                label="Likes"
+                label="Shares"
                 name='meta.shares'
                 component={this.renderField}
                 />
-                <button type="submit" className="btn btn-primary">Submit</button>
-                <Link className="btn btn-secondary" to="/">
+                <button type="submit" className="frombtn1 btn btn-primary pull-xs-left">Submit</button>
+                <Link className="formbtn2 btn btn-secondary" to="/">
                 Cancel
                 </Link>
             </form>

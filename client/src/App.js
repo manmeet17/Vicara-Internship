@@ -11,9 +11,11 @@ class App extends Component {
       <div className="App">
       <BrowserRouter>
       <div>
+      <Switch>
         <Route exact path="/" component={Landing} />
         <Route exact path="/posts/new" component={PostsNew} />
         <Route exact path="/posts/:id" component={PostsShow} />
+        </Switch>
       </div> 
       </BrowserRouter>
       </div>

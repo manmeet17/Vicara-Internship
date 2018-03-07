@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { ValidationError } from 'mongoose';
 export const FETCH_POST="FETCH_POST";
 export const FETCH_SINGLE_POST="FETCH_SINGLE_POST";
 export const DELETE_POST="DELETE_POST";
@@ -22,7 +23,7 @@ export function fetchPosts(){
 
 export function fetchPost(id){
     const req=axios.get(`http://localhost:3001/api/posts/${id}`);
-    console.log("Req is :",req);
+    console.log("Req is bulla:",req);
     return {
         type: FETCH_SINGLE_POST,
         payload: req
@@ -38,7 +39,8 @@ export function deletePost(id,cb){
 }
 
 export function createPost(values,cb){
-    const req=axios.post('http://localhost:3001/api/posts/new',values).then(() => cb());
+    const req=axios.post('http://localhost:3001/api/posts/new',values).then((res) => console.log(res)).catch((err) => console.log(err));
+    console.log('post req: ', req);
     return {
         type: CREATE_POST,
         payload: req
