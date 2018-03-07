@@ -14,7 +14,6 @@ export const CREATE_POST="CREATE_POST";
 
 export function fetchPosts(){
     const req=axios.get('http://localhost:3001/api/posts');
-    console.log("Req: ",req);
     return {
         type: FETCH_POST,
         payload: req
@@ -23,7 +22,6 @@ export function fetchPosts(){
 
 export function fetchPost(id){
     const req=axios.get(`http://localhost:3001/api/posts/${id}`);
-    console.log("Req is bulla:",req);
     return {
         type: FETCH_SINGLE_POST,
         payload: req
@@ -39,8 +37,7 @@ export function deletePost(id,cb){
 }
 
 export function createPost(values,cb){
-    const req=axios.post('http://localhost:3001/api/posts/new',values).then((res) => console.log(res)).catch((err) => console.log(err));
-    console.log('post req: ', req);
+    const req=axios.post('http://localhost:3001/api/posts/new',values).then(() => cb()).catch((err) => console.log(err));
     return {
         type: CREATE_POST,
         payload: req
