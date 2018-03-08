@@ -2,7 +2,7 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
-var passport=require('passport');
+var passport=require('./config/passport');
 var session=require('express-session');
 var flash=require('connect-flash');
 var cookieParser = require('cookie-parser');
@@ -49,7 +49,7 @@ app.all('/*', function(req, res, next) {
   next();
 });
 
-app.use('/', index);
+app.use('/auth', index);
 app.use('/api/posts', posts);
 
 // catch 404 and forward to error handler
