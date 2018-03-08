@@ -2,10 +2,13 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
+var passport=require('passport');
+var session=require('express-session');
+var flash=require('connect-flash');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose=require('mongoose');
-const config=require('./config');
+const config=require('./config/config');
 var index = require('./routes/index');
 var posts = require('./routes/posts');
 
@@ -24,6 +27,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+  secret: 'secretkey',
+  resave: false,
+  saveUninitialized: true,
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 mongoose.connect(config.db_url,(err) =>{
   if(err) console.log(err);
