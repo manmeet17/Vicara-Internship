@@ -26,7 +26,7 @@ class PostsNew extends Component{
     onSubmit(values){
         console.log("Values are:", values);
         this.props.createPost(values,() =>{
-            this.props.history.push('/');
+            this.props.history.push('/home');
         });
     }
 
@@ -66,7 +66,7 @@ class PostsNew extends Component{
                 component={this.renderField}
                 />
                 <button type="submit" className="frombtn1 btn btn-primary pull-xs-left">Submit</button>
-                <Link className="formbtn2 btn btn-secondary" to="/">
+                <Link className="formbtn2 btn btn-secondary" to="/home">
                 Cancel
                 </Link>
             </form>

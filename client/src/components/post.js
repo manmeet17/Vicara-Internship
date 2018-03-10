@@ -15,7 +15,7 @@ class PostsShow extends Component{
 
     onDelete(){
         this.props.deletePost(this.props.match.params.id,() =>{
-            this.props.history.push('/');
+            this.props.history.push('/home');
         });   
     }
     
@@ -26,12 +26,12 @@ class PostsShow extends Component{
         }
         return(
             <div className="container">
-                <Link to="/"><button className=" btn btn-success pull-xs-left backBtn">Back to Home Page </button></Link>
+                <Link to="/home"><button className=" btn btn-success pull-xs-left backBtn">Back to Home Page </button></Link>
                 <button className="delbtn btn btn-danger pull-xs-right" onClick={this.onDelete.bind(this)}>
                     Delete Post
                 </button>
                 <h3>Title: {post.title}</h3>
-                <img src={post.imgLink} /><br />
+                <img src={post.imgLink} alt=""/><br />
                 <div className="w3-show-inline-block">
                 <div className="w3-bar">
                 {

@@ -4,7 +4,7 @@ var passport=require('../config/passport');
 const User=require('../models/users');
 
 router.post('/login',passport.authenticate('local-signup',{
-  successRedirect: '/',
+  successRedirect: '/home',
   failureRedirect: '/signup',
   failureFlash: true
 }))

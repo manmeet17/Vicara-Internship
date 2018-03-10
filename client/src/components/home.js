@@ -17,7 +17,7 @@ class Landing extends Component{
             return (
                 <li className="list-group-item" key={post._id}>
                 <div className="col-lg-6 imageContainer">
-                <img src={post.imgLink} style={{width: '300px', height: "300px"}} />
+                <img src={post.imgLink} style={{width: '300px', height: "300px"}} alt="" />
                 </div><br/>
                 <h3>{post.title}</h3>  <br/>
                 <p>{post.content}</p>
