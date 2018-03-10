@@ -17,7 +17,6 @@ export default class LoginForm extends Component{
 
     handleChange(event){
         let target=event.target;
-        // const value=target.type === 'radio' ? target.checked: target.value;
         let value=target.value;
         if(target.type==='radio'){
             value=value === "yes" ? true: false; 
