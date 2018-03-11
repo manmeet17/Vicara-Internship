@@ -12,7 +12,7 @@ export const CREATE_POST="CREATE_POST";
 // }
 
 export function fetchPosts(){
-    const req=axios.get('http://localhost:3001/api/posts');
+    const req=axios.get('/api/posts');
     return {
         type: FETCH_POST,
         payload: req
@@ -20,7 +20,7 @@ export function fetchPosts(){
 }
 
 export function fetchPost(id){
-    const req=axios.get(`http://localhost:3001/api/posts/${id}`);
+    const req=axios.get(`/api/posts/${id}`);
     return {
         type: FETCH_SINGLE_POST,
         payload: req
@@ -28,7 +28,7 @@ export function fetchPost(id){
 }
 
 export function deletePost(id,cb){
-    const req=axios.delete(`http://localhost:3001/api/posts/${id}`).then(() => cb());
+    const req=axios.delete(`/api/posts/${id}`).then(() => cb());
     return{
         type: DELETE_POST,
         payload: id
@@ -36,7 +36,7 @@ export function deletePost(id,cb){
 }
 
 export function createPost(values,cb){
-    const req=axios.post('http://localhost:3001/api/posts/new',values).then(() => cb()).catch((err) => console.log(err));
+    const req=axios.post('/api/posts/new',values).then(() => cb()).catch((err) => console.log(err));
     return {
         type: CREATE_POST,
         payload: req

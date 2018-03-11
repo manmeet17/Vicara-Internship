@@ -1,7 +1,8 @@
 import React,{ Component } from 'react';
 import {Redirect} from 'react-router-dom';
+import axios from 'axios';
 
-export default class LoginForm extends Component{
+export default class SignUpForm extends Component{
     constructor(props){
         super(props);
         this.state={
@@ -29,7 +30,16 @@ export default class LoginForm extends Component{
 
     handleSubmit(event){
         event.preventDefault();
-        console.log(this.state);
+        axios.post('/auth/signup',{
+            email: this.state.email,
+            name: this.state.name,
+            password: this.state.password,
+            admin: this.state.admin,
+        })
+        .then(res => {
+            console.log(res);
+        })
+        .catch(err => console.log(err));
     }
 
     render(){
@@ -38,7 +48,7 @@ export default class LoginForm extends Component{
         } else{
             return(
                 <div className="loginForm">
-                <h1>Login Here</h1>
+                <h1>Sign Up</h1>
                 <form>
                 <label htmlFor="name">Name: </label>
                 <input type="text" name="name" value={this.state.name} onChange={this.handleChange} /><br/>
@@ -49,7 +59,7 @@ export default class LoginForm extends Component{
                 <label htmlFor="admin">Admin or Not: </label><br />
                 <input type="radio" name="admin" value="yes" onChange={this.handleChange} />Yes<br/>
                 <input type="radio" name="admin" value="no" onChange={this.handleChange} />No<br />
-                <button onClick={this.handleSubmit}>Login</button>      
+                <button onClick={this.handleSubmit}>Sign Up</button>      
                 </form>
                 </div>
             );
