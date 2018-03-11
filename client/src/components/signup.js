@@ -38,8 +38,15 @@ export default class SignUpForm extends Component{
         })
         .then(res => {
             console.log(res);
-        })
-        .catch(err => console.log(err));
+            if(!res.data.error){
+                console.log("Good to go");
+                this.setState({
+                    redirectTo: '/home'
+                });
+            }else{
+                console.log("Duplicate");
+            }
+        });
     }
 
     render(){
