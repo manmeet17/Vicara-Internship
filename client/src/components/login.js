@@ -2,14 +2,12 @@ import React,{ Component } from 'react';
 import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 
-export default class SignUpForm extends Component{
+export default class LoginForm extends Component{
     constructor(props){
         super(props);
         this.state={
-            name:'',
             email:'',
             password:'',
-            admin: false,
             redirectTo: null
         };
         this.handleChange=this.handleChange.bind(this);
@@ -30,23 +28,11 @@ export default class SignUpForm extends Component{
 
     handleSubmit(event){
         event.preventDefault();
-        axios.post('/auth/signup',{
-            email: this.state.email,
-            name: this.state.name,
-            password: this.state.password,
-            admin: this.state.admin,
+        console.log('Logging In');
+        this.props._login(this.state.email,this.state.password);
+        this.setState({
+            redirectTo: '/home'
         })
-        .then(res => {
-            console.log(res);
-            if(!res.data.error){
-                console.log("Good to go");
-                this.setState({
-                    redirectTo: '/login'
-                });
-            }else{
-                console.log("Duplicate");
-            }
-        });
     }
 
     render(){
@@ -55,18 +41,13 @@ export default class SignUpForm extends Component{
         } else{
             return(
                 <div className="loginForm">
-                <h1>Sign Up</h1>
+                <h1>Login</h1>
                 <form>
-                <label htmlFor="name">Name: </label>
-                <input type="text" name="name" value={this.state.name} onChange={this.handleChange} /><br/>
                 <label htmlFor="email">Email id: </label>
                 <input type="email" name="email" value={this.state.email} onChange={this.handleChange} /><br/>
                 <label htmlFor="password">Password: </label>
                 <input type="password" name="password" value={this.state.password} onChange={this.handleChange} /><br/>
-                <label htmlFor="admin">Admin or Not: </label><br />
-                <input type="radio" name="admin" value="yes" onChange={this.handleChange} />Yes<br/>
-                <input type="radio" name="admin" value="no" onChange={this.handleChange} />No<br />
-                <button onClick={this.handleSubmit}>Sign Up</button>      
+                <button onClick={this.handleSubmit}>Login</button>      
                 </form>
                 </div>
             );

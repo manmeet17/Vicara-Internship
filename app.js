@@ -2,7 +2,7 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
-var passport=require('./config/passport');
+var passport=require('passport');
 var session=require('express-session');
 var flash=require('connect-flash');
 var cookieParser = require('cookie-parser');
@@ -25,22 +25,23 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser('secretkey'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
   secret: 'secretkey',
-  resave: false,
-  saveUninitialized: true,
+  resave: true,
+  saveUninitialized: false,
 }));
 
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 mongoose.connect(config.db_url,(err) =>{
   if(err) console.log(err);
 });
+
+require('./config/passport')(passport);
 
 app.all('/*', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -49,7 +50,7 @@ app.all('/*', function(req, res, next) {
   next();
 });
 
-app.use('/auth', index);
+require('./routes/index')(app,passport);
 app.use('/api/posts', posts);
 
 // catch 404 and forward to error handler
