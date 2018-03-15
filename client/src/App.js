@@ -21,11 +21,26 @@ class App extends Component {
       email,
       password
     }).then(res => {
-      if(res.status==200){
+      console.log("Response from server: ",res);
+      if(res.status===200){
         this.setState({
-          loggedIn: true
-          // user: res.data.user
+          loggedIn: true,
+          user: res.data.user
         });
+      }
+    });
+  }
+
+  _logout(event){
+    event.preventDefault();
+    console.log("logging out");
+    axios.post('/auth/logout').then((res) =>{
+      console.log(res.data);
+      if(res.status===200){
+        this.setState({
+          loggedIn: false,
+          user: null
+        })
       }
     });
   }

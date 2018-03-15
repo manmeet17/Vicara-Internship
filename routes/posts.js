@@ -5,7 +5,7 @@ const Post = require('../models/post');
 
 
 router.get('/', function(req, res, next) {
-    console.log("Logged In user: ",req.user);
+  // console.log("User is: ",req.user);
   Post.find({}).exec((err, posts) =>{
     if(err)
     {

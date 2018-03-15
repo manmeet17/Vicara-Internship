@@ -28,7 +28,7 @@ export default class LoginForm extends Component{
 
     handleSubmit(event){
         event.preventDefault();
-        console.log('Logging In');
+        console.log('Logging In with user: ',this.state);
         this.props._login(this.state.email,this.state.password);
         this.setState({
             redirectTo: '/home'

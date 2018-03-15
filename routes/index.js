@@ -29,8 +29,36 @@ module.exports=(app,passport)=> {
   app.post('/auth/login',
     passport.authenticate('local-login',{session: true}),
     function(req,res){
-      console.log("\n\n\n\n App post ka user: "+req.user);
+      console.log("User is logged in: ",req.user);
+      res.json({
+        user: req.user
+      });
     }
   );
+
+  app.get('/user',(req,res) =>{
+    if(req.user){
+      res.json({
+        status: 200,
+        info: req.user
+      });
+    }
+    else{
+      res.json({
+        status: 400,
+        info: "No user found"
+      })
+    } 
+  });
+
+  app.post('/auth/logout',(req,res) =>{
+    if(req.user){
+      req.logout();
+      res.json({msg: "loggin out user"});
+    }
+    else{
+      console.log("No user found");
+    }
+  });
   
 }
