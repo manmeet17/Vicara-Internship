@@ -12,6 +12,10 @@ class Landing extends Component{
         this.props.fetchPosts();
     }
 
+    componentWillReceiveProps(props){
+        console.log("Received props: ",props);
+    }
+
     renderPost(){
         return _.map(this.props.posts,post => {
             return (

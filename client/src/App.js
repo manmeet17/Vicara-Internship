@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import {Redirect} from 'react-router-dom';
 import Landing from './components/home';
 import PostsShow from "./components/post";
 import PostsNew from './components/post_new';
 import SignUpForm from './components/signup';
 import LoginForm from './components/login';
+import User from './components/user';
 import axios from 'axios';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
@@ -15,6 +17,10 @@ class App extends Component {
       loggedIn: false,
       user: null
     }
+
+  this._login=this._login.bind(this);
+  this._logout=this._logout.bind(this);
+  
   }
   _login(email,password){
     axios.post('/auth/login',{
@@ -28,6 +34,7 @@ class App extends Component {
           user: res.data.user
         });
       }
+      console.log("Fucking state: ",this.state);      
     });
   }
 
@@ -40,7 +47,7 @@ class App extends Component {
         this.setState({
           loggedIn: false,
           user: null
-        })
+        });
       }
     });
   }
@@ -51,14 +58,20 @@ class App extends Component {
       <BrowserRouter>
       <div>
       <Switch>
-        <Route exact path="/" component={SignUpForm} />
+        <Route exact path="/signup" component={SignUpForm} />
         <Route 
         exact 
         path="/login" 
         render={() => 
         <LoginForm _login={this._login} />
         } />
-        <Route exact path="/home" component={Landing} />
+        <Route exact path="/user" render={ () => 
+        <User user={this.state} />
+        } />
+        <Route exact path="/"
+        render={ () => 
+          <Landing loggedIn={this.state.loggedIn} user={this.state.user} />
+        } />
         <Route exact path="/posts/new" component={PostsNew} />
         <Route exact path="/posts/:id" component={PostsShow} />
         </Switch>
