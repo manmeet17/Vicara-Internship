@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
 import Landing from './components/home';
+import Home from './components/landing';
 import PostsShow from "./components/post";
 import PostsNew from './components/post_new';
 import SignUpForm from './components/signup';
@@ -58,6 +59,7 @@ class App extends Component {
       <BrowserRouter>
       <div>
       <Switch>
+        <Route exact path="/" component={Home} />
         <Route exact path="/signup" component={SignUpForm} />
         <Route 
         exact 
@@ -66,9 +68,9 @@ class App extends Component {
         <LoginForm _login={this._login} />
         } />
         <Route exact path="/user" render={ () => 
-        <User user={this.state} />
+        <User user={this.state.user} />
         } />
-        <Route exact path="/"
+        <Route exact path="/home"
         render={ () => 
           <Landing loggedIn={this.state.loggedIn} user={this.state.user} />
         } />

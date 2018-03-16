@@ -31,7 +31,7 @@ export default class LoginForm extends Component{
         console.log('Logging In with user: ',this.state);
         this.props._login(this.state.email,this.state.password);
         this.setState({
-            redirectTo: '/'
+            redirectTo: '/home'
         });
     }
 

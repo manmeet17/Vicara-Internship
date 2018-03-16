@@ -39,6 +39,9 @@ class Landing extends Component{
         return (
             <div style={{textAlign: 'center'}}>
             <h1>Blog</h1>
+            <Link to="/user">
+            <button className="btn btn-lg btn-dark">User Page</button> 
+            </Link>
             <Link to="/posts/new">
             <button className="btn btn-primary">Add New Post</button>
             </Link>
